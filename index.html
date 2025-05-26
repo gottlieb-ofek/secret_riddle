@@ -10,6 +10,14 @@
       align-items: center;
       height: 100vh;
       background: #f2f2f2;
+      margin: 0;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px; /* space between image and lock */
     }
 
     .lock-container {
@@ -38,28 +46,36 @@
       border: 1px solid #ccc;
       border-radius: 5px;
     }
+
+    .logo-img {
+      width: 200px;
+    }
   </style>
 </head>
 <body>
 
-  <img src="snake.png" alt="צנחנים">
+  <div class="container">
+    <!-- ✅ Image clearly above -->
+    <h1>״לא חוזרים עד שמבצעים״</h1>
 
+    <img src="snake.png" alt="צנחנים" class="logo-img">
 
-  <div class="lock-container">
-    <div class="digit">
-      <button onclick="changeDigit(0, 1)">▲</button>
-      <div class="number-display" id="digit0">0</div>
-      <button onclick="changeDigit(0, -1)">▼</button>
-    </div>
-    <div class="digit">
-      <button onclick="changeDigit(1, 1)">▲</button>
-      <div class="number-display" id="digit1">0</div>
-      <button onclick="changeDigit(1, -1)">▼</button>
-    </div>
-    <div class="digit">
-      <button onclick="changeDigit(2, 1)">▲</button>
-      <div class="number-display" id="digit2">0</div>
-      <button onclick="changeDigit(2, -1)">▼</button>
+    <div class="lock-container">
+      <div class="digit">
+        <button onclick="changeDigit(0, 1)">▲</button>
+        <div class="number-display" id="digit0">0</div>
+        <button onclick="changeDigit(0, -1)">▼</button>
+      </div>
+      <div class="digit">
+        <button onclick="changeDigit(1, 1)">▲</button>
+        <div class="number-display" id="digit1">0</div>
+        <button onclick="changeDigit(1, -1)">▼</button>
+      </div>
+      <div class="digit">
+        <button onclick="changeDigit(2, 1)">▲</button>
+        <div class="number-display" id="digit2">0</div>
+        <button onclick="changeDigit(2, -1)">▼</button>
+      </div>
     </div>
   </div>
 
@@ -70,12 +86,11 @@
       digits[index] = (digits[index] + delta + 10) % 10;
       document.getElementById(`digit${index}`).textContent = digits[index];
 
-       // Check if combination is 8-9-0
-       setTimeout(() => {
-      if (digits[0] === 8 && digits[1] === 9 && digits[2] === 0) {
-        alert( "4" + " קרב מגע ");
-      }
-    }, 200);
+      setTimeout(() => {
+        if (digits[0] === 8 && digits[1] === 9 && digits[2] === 0) {
+          alert("4" + " קרב מגע ");
+        }
+      }, 200);
     }
   </script>
 
